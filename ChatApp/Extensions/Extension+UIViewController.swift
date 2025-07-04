@@ -16,4 +16,18 @@ extension UIViewController {
         alert.addAction(okAction)
         present(alert, animated: true)
     }
+    
+    func showLoadingView() {
+        let loadingView = LoadingView()
+        
+        loadingView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+        loadingView.tag = 20251220
+        view.addSubview(loadingView)
+    }
+    
+    func removeLoadingView() {
+        if let loadingView = view.viewWithTag(20251220) {
+            loadingView.removeFromSuperview()
+        }
+    }
 }

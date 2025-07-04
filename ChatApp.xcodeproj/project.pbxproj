@@ -13,6 +13,8 @@
 		50257E412E16A06700F25C62 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 50257E402E16A06700F25C62 /* FirebaseMessaging */; };
 		50257E432E16A06700F25C62 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 50257E422E16A06700F25C62 /* FirebaseStorage */; };
 		507175092E178A44000C9F2F /* Extension+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507175082E178A44000C9F2F /* Extension+UIViewController.swift */; };
+		5071750C2E17AE35000C9F2F /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5071750B2E17AE35000C9F2F /* LoadingView.xib */; };
+		5071750E2E17AE7F000C9F2F /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5071750D2E17AE7F000C9F2F /* LoadingView.swift */; };
 		E12D57D72A6B3FD600D556EF /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12D57D62A6B3FD600D556EF /* PrimaryButton.swift */; };
 		E12D58062A6CAE8F00D556EF /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12D58052A6CAE8F00D556EF /* Extension+UIColor.swift */; };
 		E13089A82A69EDB600C1889D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13089A72A69EDB600C1889D /* AppDelegate.swift */; };
@@ -31,6 +33,8 @@
 /* Begin PBXFileReference section */
 		50257E392E169D9500F25C62 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		507175082E178A44000C9F2F /* Extension+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIViewController.swift"; sourceTree = "<group>"; };
+		5071750B2E17AE35000C9F2F /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
+		5071750D2E17AE7F000C9F2F /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		E12D57D62A6B3FD600D556EF /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		E12D58052A6CAE8F00D556EF /* Extension+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
 		E13089A42A69EDB600C1889D /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +73,15 @@
 				507175082E178A44000C9F2F /* Extension+UIViewController.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5071750A2E17ADB3000C9F2F /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				5071750B2E17AE35000C9F2F /* LoadingView.xib */,
+				5071750D2E17AE7F000C9F2F /* LoadingView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		E130899B2A69EDB600C1889D = {
@@ -126,6 +139,7 @@
 		E13089CB2A69FFEF00C1889D /* Design */ = {
 			isa = PBXGroup;
 			children = (
+				5071750A2E17ADB3000C9F2F /* Components */,
 				E13089C32A69F24800C1889D /* Font.swift */,
 				E13089C12A69F02200C1889D /* Colors.xcassets */,
 				E12D57D62A6B3FD600D556EF /* PrimaryButton.swift */,
@@ -162,7 +176,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1630;
 				TargetAttributes = {
 					E13089A32A69EDB600C1889D = {
 						CreatedOnToolsVersion = 14.3;
@@ -199,6 +213,7 @@
 				E13089BC2A69EE7C00C1889D /* Auth.storyboard in Resources */,
 				E13089B42A69EDBB00C1889D /* LaunchScreen.storyboard in Resources */,
 				E13089B12A69EDBB00C1889D /* Assets.xcassets in Resources */,
+				5071750C2E17AE35000C9F2F /* LoadingView.xib in Resources */,
 				E13089AF2A69EDB600C1889D /* Main.storyboard in Resources */,
 				50257E3A2E169D9500F25C62 /* GoogleService-Info.plist in Resources */,
 			);
@@ -214,6 +229,7 @@
 				E13089C82A69FC1700C1889D /* CreateAccountViewController.swift in Sources */,
 				E13089C42A69F24800C1889D /* Font.swift in Sources */,
 				E13089A82A69EDB600C1889D /* AppDelegate.swift in Sources */,
+				5071750E2E17AE7F000C9F2F /* LoadingView.swift in Sources */,
 				E13089C62A69FBF400C1889D /* SignInViewController.swift in Sources */,
 				E12D57D72A6B3FD600D556EF /* PrimaryButton.swift in Sources */,
 				507175092E178A44000C9F2F /* Extension+UIViewController.swift in Sources */,
@@ -279,8 +295,10 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = RM3A588VVV;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -339,8 +357,10 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = RM3A588VVV;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -366,7 +386,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = RM3A588VVV;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ChatApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -397,7 +416,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = RM3A588VVV;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ChatApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
