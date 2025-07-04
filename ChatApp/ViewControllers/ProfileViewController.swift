@@ -17,20 +17,24 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        avatarImageView.image = UIImage(systemName: "person.fill")
+        avatarImageView.tintColor = .black
+        avatarImageView.backgroundColor = .lightGray
+        
+        let avatarTap = UITapGestureRecognizer(target: self, action: #selector(presentAvatarOptions))
+        avatarImageView.isUserInteractionEnabled = true
+        avatarImageView.addGestureRecognizer(avatarTap)
+        
     }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        containerView.layer.cornerRadius = 8
+        avatarImageView.layer.cornerRadius = avatarImageView.frame.width / 2
+    }
+        
+
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     func logout() {
         do{
             try Auth.auth().signOut()
@@ -41,6 +45,25 @@ class ProfileViewController: UIViewController {
         } catch {
             presentErrorAlert(title: "Log out Failed", message: "Something went wrong with logout. Please try again later.")
         }
+    }
+    
+    @objc func presentAvatarOptions() {
+        let avatarOptionsSheet = UIAlertController(title: "Change Avatar", message: "Select an optioin.", preferredStyle: .actionSheet)
+        let cameraAction = UIAlertAction(title: "Camera", style: .default) { _ in
+                
+        }
+        let photoAction = UIAlertAction(title: "Photo", style: .default) { _ in
+                
+        }
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+                
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        avatarOptionsSheet.addAction(cameraAction)
+        avatarOptionsSheet.addAction(photoAction)
+        avatarOptionsSheet.addAction(deleteAction)
+        avatarOptionsSheet.addAction(cancelAction)
+        present(avatarOptionsSheet, animated: true)
     }
     
     @IBAction func logoutButtonTapped(_ sender: Any) {
@@ -54,4 +77,7 @@ class ProfileViewController: UIViewController {
         present(logoutAlert, animated: true)
     }
     
+    @IBAction func closeButtonTapped(_ sender: Any) {
+        dismiss(animated: true)
+    }
 }
