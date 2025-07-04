@@ -103,30 +103,41 @@ class CreateAccountViewController: UIViewController {
             return
         }
         
-        Auth.auth().createUser(withEmail: email, password: password) { result, error in
-            if let error = error {
-                print(error.localizedDescription)
-                self.presentErrorAlert(title: "Create Account Failed", message: "Something went wrong. Please try again later.")
+        Database.database(url: "https://chatapp-e16fc-default-rtdb.asia-southeast1.firebasedatabase.app").reference().child("usernames").child(username).observeSingleEvent(of: .value) { snapshot in
+            guard !snapshot.exists() else {
+                self.presentErrorAlert(title: "Username In Use", message: "Please try a different username.")
                 return
             }
             
-            guard let result = result else {
-                self.presentErrorAlert(title: "Create Account Failed", message: "Something went wrong. Please try again later.")
-                return
+            Auth.auth().createUser(withEmail: email, password: password) { result, error in
+                if let error = error {
+                    print(error.localizedDescription)
+                    self.presentErrorAlert(title: "Create Account Failed", message: "Something went wrong. Please try again later.")
+                    return
+                }
+                
+                guard let result = result else {
+                    self.presentErrorAlert(title: "Create Account Failed", message: "Something went wrong. Please try again later.")
+                    return
+                }
+                let userId = result.user.uid
+                let userData = [
+                    "id": userId,
+                    "username": username
+                ]
+                Database.database(url: "https://chatapp-e16fc-default-rtdb.asia-southeast1.firebasedatabase.app").reference().child("users").child(userId).setValue(userData)
+                Database.database(url: "https://chatapp-e16fc-default-rtdb.asia-southeast1.firebasedatabase.app").reference().child("usernames").child(username).setValue(userData)
+                let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let homeVC = mainStoryboard.instantiateViewController(withIdentifier: "HomeViewController")
+                let navVC = UINavigationController(rootViewController: homeVC)
+                let window = UIApplication.shared.connectedScenes.flatMap { ($0 as? UIWindowScene)?.windows ?? [] }.first { $0.isKeyWindow }
+                window?.rootViewController = navVC
+                
             }
-            let userId = result.user.uid
-            let userData = [
-                "id": userId,
-                "username": username
-            ]
-            Database.database(url: "https://chatapp-e16fc-default-rtdb.asia-southeast1.firebasedatabase.app").reference().child("users").child(userId).setValue(userData)
-            let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let homeVC = mainStoryboard.instantiateViewController(withIdentifier: "HomeViewController")
-            let navVC = UINavigationController(rootViewController: homeVC)
-            let window = UIApplication.shared.connectedScenes.flatMap { ($0 as? UIWindowScene)?.windows ?? [] }.first { $0.isKeyWindow }
-            window?.rootViewController = navVC
             
         }
+        
+        
     }
     
 
