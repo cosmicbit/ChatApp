@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SignInViewController: UIViewController {
     
@@ -81,6 +82,46 @@ class SignInViewController: UIViewController {
     }
 
     @IBAction func signinButtonTapped(_ sender: Any) {
+        guard let email = emailTextField.text else {
+            presentErrorAlert(title: "Email Required", message: "Please enter email to continue ")
+            return
+        }
+        guard let password = passwordTextField.text else {
+            presentErrorAlert(title: "Password Required", message: "Please enter password to continue")
+            return
+        }
+        
+        showLoadingView()
+        
+        Auth.auth().signIn(withEmail: email, password: password) { _, error in
+            self.removeLoadingView()
+            if let error = error {
+                print(error.localizedDescription)
+                var errorMessage = "Something went wrong. Please try again later."
+                if let authError = error as NSError? {
+                    let errorCode = AuthErrorCode(rawValue: authError.code)
+                    switch errorCode {
+                    case .invalidEmail:
+                        errorMessage = "Invalid Email"
+                    case .userNotFound:
+                        errorMessage = "User not Found"
+                    default:
+                        break
+                    }
+                
+                }
+                self.presentErrorAlert(title: "Sign in Failed", message: errorMessage)
+                return
+            }
+            
+            let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let homeVC = mainStoryboard.instantiateViewController(withIdentifier: "HomeViewController")
+            let navVC = UINavigationController(rootViewController: homeVC)
+            let window = UIApplication.shared.connectedScenes.flatMap { ($0 as? UIWindowScene)?.windows ?? [] }.first { $0.isKeyWindow }
+            window?.rootViewController = navVC
+            
+            
+        }
         
     }
 
