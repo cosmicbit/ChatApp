@@ -15,6 +15,7 @@
 		507175092E178A44000C9F2F /* Extension+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507175082E178A44000C9F2F /* Extension+UIViewController.swift */; };
 		5071750C2E17AE35000C9F2F /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5071750B2E17AE35000C9F2F /* LoadingView.xib */; };
 		5071750E2E17AE7F000C9F2F /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5071750D2E17AE7F000C9F2F /* LoadingView.swift */; };
+		507175102E17CD4C000C9F2F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5071750F2E17CD4C000C9F2F /* ProfileViewController.swift */; };
 		E12D57D72A6B3FD600D556EF /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12D57D62A6B3FD600D556EF /* PrimaryButton.swift */; };
 		E12D58062A6CAE8F00D556EF /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12D58052A6CAE8F00D556EF /* Extension+UIColor.swift */; };
 		E13089A82A69EDB600C1889D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13089A72A69EDB600C1889D /* AppDelegate.swift */; };
@@ -35,6 +36,7 @@
 		507175082E178A44000C9F2F /* Extension+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIViewController.swift"; sourceTree = "<group>"; };
 		5071750B2E17AE35000C9F2F /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 		5071750D2E17AE7F000C9F2F /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		5071750F2E17CD4C000C9F2F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E12D57D62A6B3FD600D556EF /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		E12D58052A6CAE8F00D556EF /* Extension+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
 		E13089A42A69EDB600C1889D /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,6 +125,7 @@
 				E13089C52A69FBF400C1889D /* SignInViewController.swift */,
 				E13089C72A69FC1700C1889D /* CreateAccountViewController.swift */,
 				E13089C92A69FCD300C1889D /* HomeViewController.swift */,
+				5071750F2E17CD4C000C9F2F /* ProfileViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 				5071750E2E17AE7F000C9F2F /* LoadingView.swift in Sources */,
 				E13089C62A69FBF400C1889D /* SignInViewController.swift in Sources */,
 				E12D57D72A6B3FD600D556EF /* PrimaryButton.swift in Sources */,
+				507175102E17CD4C000C9F2F /* ProfileViewController.swift in Sources */,
 				507175092E178A44000C9F2F /* Extension+UIViewController.swift in Sources */,
 				E13089CA2A69FCD300C1889D /* HomeViewController.swift in Sources */,
 				E13089AA2A69EDB600C1889D /* SceneDelegate.swift in Sources */,
