@@ -114,7 +114,21 @@ class CreateAccountViewController: UIViewController {
                 self.removeLoadingView()
                 if let error = error {
                     print(error.localizedDescription)
-                    self.presentErrorAlert(title: "Create Account Failed", message: "Something went wrong. Please try again later.")
+                    var errorMessage = "Something went wrong. Please try again later."
+                    if let authError = error as NSError? {
+                        switch AuthErrorCode(rawValue: authError.code) {
+                        case .emailAlreadyInUse:
+                            errorMessage = "Email already in Use."
+                        case .invalidEmail:
+                            errorMessage = "Invalid Email"
+                        case .weakPassword:
+                            errorMessage = "Weak password"
+                        default:
+                            break
+                        }
+                    
+                    }
+                    self.presentErrorAlert(title: "Create Account Failed", message: errorMessage)
                     return
                 }
                 
